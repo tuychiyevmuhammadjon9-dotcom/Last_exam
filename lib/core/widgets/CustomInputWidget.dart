@@ -4,37 +4,50 @@ import 'package:flutter_last_exam/core/const/colors/Appcolors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomInputWidget extends StatelessWidget {
-  const CustomInputWidget({super.key, required this.hintText, this.controller});
+  const CustomInputWidget({
+    super.key,
+    required this.hintText,
+    this.controller,
+    this.obscureText = false,
+    this.validator,
+  });
   final String hintText;
   final TextEditingController? controller;
+  final bool obscureText;
+  final String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45,
       child: TextFormField(
+        obscureText: obscureText,
         textAlign: TextAlign.start,
         controller: controller,
         cursorColor: Appcolors.primary,
         cursorWidth: 2,
         cursorErrorColor: Colors.red,
+        validator: validator,
         decoration: InputDecoration(
           focusColor: Appcolors.primary,
-          focusedBorder: UnderlineInputBorder(
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(color: Appcolors.primary),
           ),
-          errorBorder: UnderlineInputBorder(
+          errorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(color: Colors.red),
           ),
-          enabledBorder: UnderlineInputBorder(
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(color: Appcolors.primary),
           ),
           hintTextDirection: TextDirection.ltr,
           hintText: hintText,
           hintStyle: GoogleFonts.poppins(
-            fontSize: 15,
+            fontSize: 12,
             fontWeight: FontWeight.w400,
-            color: Appcolors.textprimary,
+            color: Appcolors.black,
           ),
           fillColor: Appcolors.white,
           filled: true,

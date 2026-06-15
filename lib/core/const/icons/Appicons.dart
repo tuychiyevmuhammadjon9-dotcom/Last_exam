@@ -4,4 +4,6 @@ class Appicons {
   static const String onboarding1 = 'assets/icons/onboarding1.svg';
   static const String onboarding2 = 'assets/icons/onboarding2.svg';
   static const String onboarding3 = 'assets/icons/onboarding3.svg';
+  //* Auth screen icons
+  static const String left = 'assets/icons/left.svg';
 }

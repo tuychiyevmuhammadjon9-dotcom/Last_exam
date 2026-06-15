@@ -12,4 +12,5 @@ class Appcolors {
   static const Color textsecondary = Color(0xff896CFE);
   static const Color textprimary = Color(0xffE2F163);
   static const Color dotcolor = Color(0xff896CFE);
+  static const Color textgray = Color(0xff828282);
 }

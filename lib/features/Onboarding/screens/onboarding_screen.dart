@@ -1,13 +1,11 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_last_exam/core/const/colors/Appcolors.dart';
 import 'package:flutter_last_exam/core/const/icons/Appicons.dart';
 import 'package:flutter_last_exam/core/const/images/Appimages.dart';
+import 'package:flutter_last_exam/core/router/app_router.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTapwidet.dart';
-import 'package:flutter_last_exam/core/widgets/CustomTextWidget.dart';
 import 'package:flutter_last_exam/features/Onboarding/widgets/CustomOnboardingWidget.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_last_exam/features/Onboarding/widgets/Skipwidget.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -67,19 +65,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(right: 10, top: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Customtextwidget(
-                        text: 'Skip',
-                        fontsize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Appcolors.textprimary,
-                      ),
-                      SizedBox(width: 5),
-                      SvgPicture.asset(Appicons.right, width: 11, height: 11),
-                    ],
-                  ),
+                  child: index == onboardingData.length - 1
+                      ? SizedBox()
+                      : Skipwidget(
+                          onTap: () {
+                            Navigator.pushNamed(context, AppPages.login);
+                          },
+                        ),
                 ),
                 SizedBox(height: MediaQuery.sizeOf(context).height * 0.35),
                 Container(
@@ -115,13 +107,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ),
                 SizedBox(height: 10),
                 CustomTapwidget(
-                  text: 'Next',
+                  text: index == onboardingData.length - 1
+                      ? 'Get Started'
+                      : 'Next',
                   onTap: () {
-                    pageController.nextPage(
-                      duration: Duration(milliseconds: 300),
-                      curve: Curves.easeIn,
-                    );
-                    setState(() {});
+                    if (index == onboardingData.length - 1) {
+                      Navigator.pushNamed(context, AppPages.login);
+                    } else {
+                      pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeIn,
+                      );
+                      setState(() {});
+                    }
                   },
                 ),
               ],

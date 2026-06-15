@@ -20,7 +20,10 @@ class CustomTapwidget extends StatelessWidget {
           child: Container(
             height: 35,
             width: 150,
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(color: Appcolors.white),
+            ),
             child: Center(
               child: Customtextwidget(
                 text: text,
