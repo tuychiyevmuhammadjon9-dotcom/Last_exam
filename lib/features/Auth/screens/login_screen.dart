@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_last_exam/core/const/colors/Appcolors.dart';
-import 'package:flutter_last_exam/core/const/icons/Appicons.dart';
 import 'package:flutter_last_exam/core/const/images/Appimages.dart';
 import 'package:flutter_last_exam/core/router/app_router.dart';
 import 'package:flutter_last_exam/core/widgets/CustomInputWidget.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTapwidet.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTextWidget.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_last_exam/features/Auth/widgets/CustomappbarAuth.dart';
+import 'package:flutter_last_exam/features/Auth/widgets/CustomhaveaccountWidget.dart';
 import 'package:toastification/toastification.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -35,27 +35,15 @@ class _LoginScreenState extends State<LoginScreen> {
       Appimages.fingerprint,
     ];
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: CustomAppbarAuth(text: 'Log In', ontap: () {}),
+      ),
       backgroundColor: Appcolors.background,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  SvgPicture.asset(Appicons.left, width: 11, height: 11),
-                  SizedBox(width: MediaQuery.sizeOf(context).width * 0.35),
-                  Customtextwidget(
-                    text: 'Log In',
-                    fontsize: 15,
-                    fontWeight: FontWeight.bold,
-                    color: Appcolors.textprimary,
-                  ),
-                ],
-              ),
-            ),
             SizedBox(height: 40),
             Customtextwidget(
               text: 'Welcome',
@@ -81,72 +69,75 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: BoxDecoration(color: Appcolors.primary),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 20),
-                    Customtextwidget(
-                      text: 'Username or Email',
-                      fontsize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Appcolors.background,
-                    ),
-                    SizedBox(height: 7),
-                    CustomInputWidget(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your username or email';
-                        } else if (!value.contains('@gmail.com')) {
-                          return 'Please enter a valid email';
-                        }
-                        return null;
-                      },
-                      hintText: 'Username or Email',
-                      controller: usernameController,
-                    ),
-                    SizedBox(height: 20),
-                    Customtextwidget(
-                      text: 'Password',
-                      fontsize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Appcolors.background,
-                    ),
-                    SizedBox(height: 7),
-                    CustomInputWidget(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your password';
-                        } else if (value.length < 6) {
-                          return 'Password must be at least 6 characters';
-                        }
-                        return null;
-                      },
-                      hintText: 'Password',
-                      controller: passwordController,
-                    ),
-                    SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.pushNamed(
-                              context,
-                              AppPages.forgotpassword,
-                            );
-                          },
-                          child: Customtextwidget(
-                            textalign: TextAlign.end,
-                            text: 'Forgot Password?',
-                            fontsize: 10,
-                            fontWeight: FontWeight.w500,
-                            color: Appcolors.background,
+                child: Form(
+                  key: formkey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20),
+                      Customtextwidget(
+                        text: 'Username or Email',
+                        fontsize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Appcolors.background,
+                      ),
+                      SizedBox(height: 7),
+                      CustomInputWidget(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your username or email';
+                          } else if (!value.contains('@gmail.com')) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
+                        },
+                        hintText: 'Username or Email',
+                        controller: usernameController,
+                      ),
+                      SizedBox(height: 20),
+                      Customtextwidget(
+                        text: 'Password',
+                        fontsize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Appcolors.background,
+                      ),
+                      SizedBox(height: 7),
+                      CustomInputWidget(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your password';
+                          } else if (value.length < 6) {
+                            return 'Password must be at least 6 characters';
+                          }
+                          return null;
+                        },
+                        hintText: 'Password',
+                        controller: passwordController,
+                      ),
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.pushNamed(
+                                context,
+                                AppPages.forgotpassword,
+                              );
+                            },
+                            child: Customtextwidget(
+                              textalign: TextAlign.end,
+                              text: 'Forgot Password?',
+                              fontsize: 10,
+                              fontWeight: FontWeight.w500,
+                              color: Appcolors.background,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 10),
-                  ],
+                        ],
+                      ),
+                      SizedBox(height: 10),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -155,7 +146,7 @@ class _LoginScreenState extends State<LoginScreen> {
               text: 'Log In',
               onTap: () {
                 if (formkey.currentState!.validate()) {
-                  Navigator.pushNamed(context, AppPages.forgotpassword);
+                  Navigator.pushNamed(context, AppPages.setup);
                 } else {
                   Toastification().show(
                     context: context,
@@ -191,23 +182,12 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Customtextwidget(
-                  text: 'Don\'t have an account?',
-                  fontsize: 9,
-                  fontWeight: FontWeight.w400,
-                  color: Appcolors.white,
-                ),
-                SizedBox(width: 5),
-                Customtextwidget(
-                  text: 'Sign Up',
-                  fontsize: 9,
-                  fontWeight: FontWeight.w400,
-                  color: Appcolors.textprimary,
-                ),
-              ],
+            CustomhaveaccountWidget(
+              text: 'Don’t have an account?',
+              text2: 'Sign Up',
+              ontap: () {
+                Navigator.pushNamed(context, AppPages.createaccount);
+              },
             ),
             SizedBox(height: 20),
           ],

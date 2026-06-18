@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_last_exam/core/const/colors/Appcolors.dart';
 import 'package:flutter_last_exam/core/const/icons/Appicons.dart';
+import 'package:flutter_last_exam/core/router/app_router.dart';
 import 'package:flutter_last_exam/core/widgets/CustomInputWidget.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTapwidet.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTextWidget.dart';
+import 'package:flutter_last_exam/features/Auth/widgets/CustomappbarAuth.dart';
 import 'package:flutter_svg/svg.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -14,6 +16,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final formkey = GlobalKey<FormState>();
   final TextEditingController usernameController = TextEditingController();
   @override
   void dispose() {
@@ -24,6 +27,15 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: CustomAppbarAuth(
+          text: 'Forgotten Password',
+          ontap: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       backgroundColor: Appcolors.background,
       body: SafeArea(
         child: Column(
@@ -78,29 +90,46 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               decoration: BoxDecoration(color: Appcolors.primary),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 20),
-                    Customtextwidget(
-                      text: 'Enter your email address',
-                      fontsize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: Appcolors.background,
-                    ),
-                    SizedBox(height: 7),
-                    CustomInputWidget(
-                      hintText: 'Username or Email',
-                      controller: usernameController,
-                    ),
-                    SizedBox(height: 20),
-
-                  ],
+                child: Form(
+                  key: formkey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 20),
+                      Customtextwidget(
+                        text: 'Enter your email address',
+                        fontsize: 12,
+                        fontWeight: FontWeight.w500,
+                        color: Appcolors.background,
+                      ),
+                      SizedBox(height: 7),
+                      CustomInputWidget(
+                        hintText: 'Username or Email',
+                        controller: usernameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your username or email';
+                          } else if (!value.contains('@gmail.com')) {
+                            return 'Please enter a valid email';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20),
+                    ],
+                  ),
                 ),
               ),
             ),
             SizedBox(height: 30),
-            CustomTapwidget(text: 'Continue', onTap: () {}),
+            CustomTapwidget(
+              text: 'Continue',
+              onTap: () {
+                if (formkey.currentState!.validate()) {
+                  Navigator.pushNamed(context, AppPages.login);
+                }
+              },
+            ),
           ],
         ),
       ),

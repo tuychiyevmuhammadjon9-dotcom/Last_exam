@@ -17,6 +17,8 @@ dependencies:
   google_fonts: ^8.1.0
   flutter_svg: ^2.3.0
   toastification: ^3.2.0
+  flutter_ruler_picker: ^1.0.6
+  wheel_picker: ^0.3.0
 
 dev_dependencies:
   flutter_test:

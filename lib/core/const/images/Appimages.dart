@@ -12,4 +12,8 @@ class Appimages {
   static const String google = 'assets/images/google.png';
   static const String facebook = 'assets/images/facebook.png';
   static const String fingerprint = 'assets/images/fingerprint.png';
+  //* setup screen images
+  static const String setup = 'assets/images/setup.png';
+  static const String male = 'assets/images/male.png';
+  static const String female = 'assets/images/female.png';
 }

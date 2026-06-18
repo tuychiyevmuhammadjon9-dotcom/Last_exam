@@ -21,6 +21,7 @@ class CustomTapwidget extends StatelessWidget {
             height: 35,
             width: 150,
             decoration: BoxDecoration(
+              color: Appcolors.white.withAlpha(25),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(color: Appcolors.white),
             ),
