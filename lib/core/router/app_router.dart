@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_last_exam/features/Auth/screens/create_account_screen.dart';
 import 'package:flutter_last_exam/features/Auth/screens/forgot_password_screen.dart';
 import 'package:flutter_last_exam/features/Auth/screens/login_screen.dart';
+import 'package:flutter_last_exam/features/Home/screens/home_screen.dart';
 import 'package:flutter_last_exam/features/Onboarding/screens/onboarding_screen.dart';
 import 'package:flutter_last_exam/features/Onboarding/screens/splash_screen.dart';
 import 'package:flutter_last_exam/features/Onboarding/screens/welcome_screen.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_last_exam/features/SetUp/screens/old_screen.dart';
 import 'package:flutter_last_exam/features/SetUp/screens/physical_level_screen.dart';
 import 'package:flutter_last_exam/features/SetUp/screens/setup_screen.dart';
 import 'package:flutter_last_exam/features/SetUp/screens/weight_screen.dart';
+import 'package:flutter_last_exam/features/Settings/screens/profile_screen.dart';
 
 class AppRouter {
   static Route? onGenerateRoute(RouteSettings settings) {
@@ -42,6 +44,10 @@ class AppRouter {
         return MaterialPageRoute(builder: (context) => GoalScreen());
       case AppPages.physicallevel:
         return MaterialPageRoute(builder: (context) => PhysicalLevelScreen());
+      case AppPages.profile:
+        return MaterialPageRoute(builder: (context) => ProfileScreen());
+      case AppPages.home:
+        return MaterialPageRoute(builder: (context) => HomeScreen());
       default:
         return null;
     }
@@ -49,6 +55,8 @@ class AppRouter {
 }
 
 class AppPages {
+  static const String home = '/home';
+  static const String profile = '/profile';
   static const String physicallevel = '/physicallevel';
   static const String goal = '/goal';
   static const String height = '/height';

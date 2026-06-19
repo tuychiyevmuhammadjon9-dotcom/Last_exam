@@ -19,6 +19,10 @@ dependencies:
   toastification: ^3.2.0
   flutter_ruler_picker: ^1.0.6
   wheel_picker: ^0.3.0
+  liquid_bottom_nav_bar: ^0.1.0
+  google_sign_in: ^7.2.0
+  lottie: ^3.3.3
+  cupertino_icons: ^1.0.9
 
 dev_dependencies:
   flutter_test:

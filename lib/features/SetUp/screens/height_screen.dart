@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_last_exam/core/const/colors/Appcolors.dart';
 import 'package:flutter_last_exam/core/router/app_router.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTapwidet.dart';
+import 'package:flutter_last_exam/features/SetUp/cubit/Setup_cubit.dart';
+import 'package:flutter_last_exam/features/SetUp/cubit/Setup_state.dart';
 import 'package:flutter_last_exam/features/SetUp/widgets/CustomAppbarSetup.dart';
 import 'package:flutter_last_exam/features/SetUp/widgets/CustomTitleWidget.dart';
 import 'package:flutter_last_exam/features/SetUp/widgets/HeightPickerWidget.dart';
@@ -27,31 +30,41 @@ class _HeightScreenState extends State<HeightScreen> {
           },
         ),
       ),
-      body: Column(
-        children: [
-          SizedBox(height: 20),
-          CustomTitleWIdget(
-            text: 'What Is Your height?',
-            color: Appcolors.background,
-            textcolor: Appcolors.white,
-          ),
-          HeightPickerWidget(
-            initialHeight: height.toDouble(),
-            onChanged: (value) {
-              setState(() {
-                height = value.toInt();
-              });
-            },
-          ),
-          Spacer(),
-          CustomTapwidget(
-            text: 'Continue',
-            onTap: () {
-              Navigator.pushNamed(context, AppPages.goal);
-            },
-          ),
-          SizedBox(height: 20),
-        ],
+      body: BlocConsumer<SetupCubit, SetupState>(
+        listener: (context, state) {
+          if (state.height != null) {
+            height = state.height!.toInt();
+          }
+        },
+        builder: (context, state) {
+          return Column(
+            children: [
+              SizedBox(height: 20),
+              CustomTitleWIdget(
+                text: 'What Is Your height?',
+                color: Appcolors.background,
+                textcolor: Appcolors.white,
+              ),
+              HeightPickerWidget(
+                initialHeight: height.toDouble(),
+                onChanged: (value) {
+                  setState(() {
+                    height = value.toInt();
+                  });
+                },
+              ),
+              Spacer(),
+              CustomTapwidget(
+                text: 'Continue',
+                onTap: () {
+                  context.read<SetupCubit>().selectHeight(height.toDouble());
+                  Navigator.pushNamed(context, AppPages.goal);
+                },
+              ),
+              SizedBox(height: 20),
+            ],
+          );
+        },
       ),
     );
   }

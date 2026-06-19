@@ -16,4 +16,10 @@ class Appimages {
   static const String setup = 'assets/images/setup.png';
   static const String male = 'assets/images/male.png';
   static const String female = 'assets/images/female.png';
+  //* home screen images
+  static const String woman1 = 'assets/images/woman1.png';
+  static const String woman2 = 'assets/images/woman2.png';
+  static const String woman3 = 'assets/images/woman3.png';
+  static const String woman4 = 'assets/images/woman4.png';
+  static const String men1 = 'assets/images/men1.png';
 }

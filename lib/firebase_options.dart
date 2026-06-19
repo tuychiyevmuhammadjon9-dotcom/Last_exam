@@ -47,30 +47,31 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCLyVvs9hyFlJ0R2qlC6XtwC25Gbx1v8kM',
-    appId: '1:6007384474:web:5f641679cd6bf083b4f223',
-    messagingSenderId: '6007384474',
-    projectId: 'auth-9e085',
-    authDomain: 'auth-9e085.firebaseapp.com',
-    storageBucket: 'auth-9e085.firebasestorage.app',
-    measurementId: 'G-E44XRNMRV0',
+    apiKey: 'AIzaSyBUZpMdwgpJ6LA8qlrHhLap9cGcrVCtwBI',
+    appId: '1:934361748118:web:266644c12282bf310568b7',
+    messagingSenderId: '934361748118',
+    projectId: 'last-exam-188de',
+    authDomain: 'last-exam-188de.firebaseapp.com',
+    storageBucket: 'last-exam-188de.firebasestorage.app',
+    measurementId: 'G-W9E5WSG2PV',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBzUOHSEoZFEGDP_l-S91dootOiGewgwNI',
-    appId: '1:6007384474:android:c58cafcdf9a1eb62b4f223',
-    messagingSenderId: '6007384474',
-    projectId: 'auth-9e085',
-    storageBucket: 'auth-9e085.firebasestorage.app',
+    apiKey: 'AIzaSyBCGtDHypSj86diySNnfA--nIFIHKEoK0E',
+    appId: '1:934361748118:android:67e677ca798d95c30568b7',
+    messagingSenderId: '934361748118',
+    projectId: 'last-exam-188de',
+    storageBucket: 'last-exam-188de.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDkKn38ced1imrjez6PDDHkkSMMgRUU4HQ',
-    appId: '1:6007384474:ios:0da59436e32cfcb4b4f223',
-    messagingSenderId: '6007384474',
-    projectId: 'auth-9e085',
-    storageBucket: 'auth-9e085.firebasestorage.app',
-    iosClientId: '6007384474-n0od82ojkrjnbad8j691aias7mm1u4ho.apps.googleusercontent.com',
+    apiKey: 'AIzaSyCIR4UJaC2-QTWchrzgYoloENAt322CvcI',
+    appId: '1:934361748118:ios:147dca5f71af5e790568b7',
+    messagingSenderId: '934361748118',
+    projectId: 'last-exam-188de',
+    storageBucket: 'last-exam-188de.firebasestorage.app',
+    androidClientId: '934361748118-q9kr2j12h5f0rfatseoie7pqptiqaavs.apps.googleusercontent.com',
+    iosClientId: '934361748118-i9d6rmaj387vhlfe0qb821c9s21rpc5u.apps.googleusercontent.com',
     iosBundleId: 'com.example.flutterLastExam',
   );
 

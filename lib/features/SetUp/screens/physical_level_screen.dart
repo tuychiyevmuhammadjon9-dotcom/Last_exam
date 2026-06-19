@@ -76,7 +76,7 @@ class _PhysicalLevelScreenState extends State<PhysicalLevelScreen> {
           CustomTapwidget(
             text: 'Continue',
             onTap: () {
-              Navigator.pushNamed(context, AppPages.physicallevel);
+              Navigator.pushNamed(context, AppPages.home);
             },
           ),
           SizedBox(height: 20),

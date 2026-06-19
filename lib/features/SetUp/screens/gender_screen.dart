@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_last_exam/core/const/colors/Appcolors.dart';
 import 'package:flutter_last_exam/core/const/images/Appimages.dart';
 import 'package:flutter_last_exam/core/router/app_router.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTapwidet.dart';
 import 'package:flutter_last_exam/core/widgets/CustomTextWidget.dart';
+import 'package:flutter_last_exam/features/SetUp/cubit/Setup_cubit.dart';
 import 'package:flutter_last_exam/features/SetUp/widgets/CustomAppbarSetup.dart';
 import 'package:flutter_last_exam/features/SetUp/widgets/CustomTitleWidget.dart';
 
@@ -93,6 +95,9 @@ class _GenderScreenState extends State<GenderScreen> {
           CustomTapwidget(
             text: 'Continue',
             onTap: () {
+              context.read<SetupCubit>().selectGender(
+                gender[selectedIndex] == "male" ? "male" : 'female',
+              );
               Navigator.pushNamed(context, AppPages.old);
             },
           ),
